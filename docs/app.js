@@ -4,19 +4,19 @@ let products = []; // Stores all products
 // 1. Load John Doe example
 function loadExample() {
   document.getElementById("name").value = "John Doe";
-  document.getElementById("description").value = "John Doe is a climate tech innovator...";
+  document.getElementById("description").value = "John Doe is a forward-thinking innovator and sustainability advocate who has developed a groundbreaking solar charger kit designed to bring affordable, clean, and reliable energy solutions to underserved communities and eco-conscious consumers alike. With a background in electrical engineering and a passion for renewable energy, John has combined technical expertise with a deep understanding of real-world energy challenges to create a solution that is as practical as it is visionary.";
 
   document.getElementById("email").value = "john.doe@example.com";
-  document.getElementById("phone").value = "+1234567890";
+  document.getElementById("phone").value = "+254722567890";
   document.getElementById("linkedin").value = "https://linkedin.com/in/johndoe"; // NEW
-  document.getElementById("twitter").value = "https://twitter.com/johndoe";     // NEW
+  document.getElementById("twitter").value = "https://x.com/johndoe";     // NEW
   document.getElementById("website").value = "https://johndoe.tech";           // NEW
   // Auto-fill example product
   document.getElementById("product-name").value = "Solar Charger Kit";
   document.getElementById("product-industry").value = "Climate";
-  document.getElementById("product-desc").value = "A low-cost solar charger...";
+  document.getElementById("product-desc").value = "The solar charger kit—compact, modular, and user-friendly—addresses multiple gaps in the current solar technology market. Unlike conventional systems that are either too costly or too complex for everyday users, John’s kit is designed with simplicity, affordability, and efficiency in mind. Whether it’s used for off-grid households, outdoor enthusiasts, or emergency preparedness, this solar charger delivers consistent performance with minimal setup and maintenance.";
   document.getElementById("product-price").value = "5000 Shs";
-  document.getElementById("product-video").value = "https://youtube.com/example";
+  document.getElementById("product-video").value = "https://www.youtube.com/watch?v=S9a1nLw70p0";
   document.getElementById("product-tags").value = "solar, renewable";
 }
 
@@ -28,7 +28,7 @@ function addProduct() {
   const price = document.getElementById("product-price").value;
   const video = document.getElementById("product-video").value;
   const tags = document.getElementById("product-tags").value.split(",").map(tag => tag.trim());
-  const image = document.getElementById("product-image").files[0];
+  const image = document.getElementById("product-image").files[0];  
 
   if (!name || !industry || !desc) {
     alert("Name, industry, and description are required!");
@@ -111,7 +111,8 @@ function generateFiles() {
     </head>
     <body>
       <h1>${name}</h1>
-      ${avatar ? `<img src="images/avatar.jpg" width="150">` : ""}
+      <!-- ${avatar ? `<img src="images/avatar.jpg" width="150">` : ""} -->
+      <img src="images/avatar.jpg" width="150">
       
       <!-- NEW: Contacts Section -->
       <div class="contacts">
