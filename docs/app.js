@@ -87,7 +87,11 @@ function generateFiles() {
   const folder = zip.folder(`innovator_${name.replace(/ /g, "_")}`);
 
   // Generate profile.html
-  folder.file("profile.html", `
+  const file_name = `${name.replace(/ /g, "_")}.html`
+  console.log(file_name)
+  // folder.file("profile.html", `
+  // folder.file(`${name.replace(/ /g, "_")}.html`), `
+  folder.file(file_name, `
     <!DOCTYPE html>
     <html>
     <head>
@@ -151,7 +155,7 @@ function generateFiles() {
         ${product.price ? `<p><strong>Price:</strong> ${product.price}</p>` : ""}
         ${product.tags.length > 0 ? `<p><strong>Tags:</strong> ${product.tags.join(", ")}</p>` : ""}
         ${product.video ? `<iframe width="560" height="315" src="${embedVideoLink(product.video)}" frameborder="0" allowfullscreen></iframe>` : ""}
-        <p><a href="profile.html">← Back to Profile</a></p>
+        <p><a href="javascript:history.back()">← Back to Profile</a></p>
       </body>
       </html>
     `);
