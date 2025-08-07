@@ -1,4 +1,4 @@
-The code for profilebuilder is open-source and available here: https://github.com/Topaz2015/ProfileBuilder
+
 How it works
     Simple profile building assist for innovators. its simple to use.
     1. First fill in your personal profile details and upload your avatar (can be individual or organisation details).
