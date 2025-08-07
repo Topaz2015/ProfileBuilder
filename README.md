@@ -1,5 +1,6 @@
 
-How it works
+How it works!!
+
     Simple profile building assist for innovators. its simple to use.
     1. First fill in your personal profile details and upload your avatar (can be individual or organisation details).
     2. Enter product details and upload an image or brand logo. If you have a video link just paste it.
