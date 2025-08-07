@@ -28,10 +28,10 @@
 </head>
 <body>
   <h1>Innovator Profile Builder</h1>
-  
+  <a href="#instructions">Instructions</a>
 
   <!-- Profile Form -->
-  <div class="form-group">
+  <div class="form-group" id="top">
     <h2>Your Profile</h2>
     <button onclick="loadExample()">Load John Doe Example</button>
     <input type="text" id="name" placeholder="Name" required>
@@ -82,6 +82,24 @@
 
   <!-- Generate Button -->
   <button onclick="generateFiles()">Download Profile (ZIP)</button>
+  <hr>
+  <div id="instructions">  
+    <h2>How it works</h2>
+    <p>Simple profile building assist for innovators. is simple to use.</p>
+    <p>1. First fill in your personal profile details and upload your avatar (can be individual or organisation details).</p>
+    <p>2. Enter product details and upload an image or brand logo. If you have a video link just paste it.</p>
+    <p>3. Add tags for each product. This will enable sorting by tags later in the database.</p>
+    <p>4. Click to Add product. This activates the creation of that product's page. An innovator can have multiple products.</p> 
+    <p>5. Lastly hit the Download Profile button. Everything is now bundled up to a small website with "your_name.html" as the root. </p>
+    <p>NB: The resulting profile is not archived. Inbox on whatsapp your zipped profile when done to be included in the database. </p>
+    <h2>Moving forward</h2>
+    <p>*This work is progressive. Feel free to visit again and again to see our progress.* </p>
+    
+    <p>Fellow programmers, please share in the group or inbox any issues, ideas, and even better- desire to collaborate. </p>
+    <p>You can also fork and/or open an issue <a href="https://github.com/Topaz2015/ProfileBuilder/issues">here</a></p>
+</div>
+<a href="#top">Back to top</a>
+<hr>
 
   <!-- JS Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -89,5 +107,4 @@
   <script src="app.js"></script> <!-- Your logic -->
 </body>
 </html>
-
 
