@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovator Profile Builder - Create Your Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#4CAF50',
+            'primary-dark': '#45a049',
+            'primary-light': '#81C784',
+            'accent': '#2196F3',
+            'dark': '#1a1a1a',
+            'dark-lighter': '#2d2d2d',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'scale-in': 'scaleIn 0.4s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(40px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .step-transition {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800 min-h-screen flex flex-col overflow-x-hidden">
+  <!-- Navigation -->
+  <nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm" role="navigation">
+    <div class="w-full lg:w-[90%] mx-auto px-2 sm:px-4 lg:px-6">
+      <div class="flex justify-between items-center py-3 sm:py-4">
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <div class="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-r from-primary to-primary-dark rounded-xl flex items-center justify-center">
+            <svg class="w-5 sm:w-6 h-5 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Innovators Hub Logo">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-lg sm:text-xl font-bold text-gray-900">Innovators Hub</h1>
+            <p class="text-xs text-gray-600 hidden sm:block">Building Tomorrow Together</p>
+          </div>
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-primary transition-colors font-medium text-sm lg:text-base">Home</a>
+          <a href="index.html#about" class="text-gray-700 hover:text-primary transition-colors font-medium text-sm lg:text-base">About</a>
+          <a href="index.html#community" class="text-gray-700 hover:text-primary transition-colors font-medium text-sm lg:text-base">Our Hub</a>
+          <a href="listings.html" class="text-gray-700 hover:text-primary transition-colors font-medium text-sm lg:text-base">Profiles</a>
+        </div>
+        
+        <div class="flex items-center space-x-3 sm:space-x-4">
+          <a href="create-profile.html" class="bg-gradient-to-r from-primary to-primary-dark text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 text-sm sm:text-base">
+            Join Community
+          </a>
+          <button id="mobile-menu-btn" class="md:hidden p-2 bg-gray-800 border border-gray-600 rounded-lg">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Menu">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900/100 z-50 md:hidden">
+      <div class="flex flex-col items-center justify-center min-h-screen space-y-4">
+        <button id="close-menu" class="absolute top-4 right-4 p-3">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Close Menu">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <a href="index.html" class="text-white text-lg font-medium hover:text-primary px-6 py-3">Home</a>
+        <a href="index.html#about" class="text-white text-lg font-medium hover:text-primary px-6 py-3">About</a>
+        <a href="index.html#community" class="text-white text-lg font-medium hover:text-primary px-6 py-3">Our Hub</a>
+        <a href="listings.html" class="text-white text-lg font-medium hover:text-primary px-6 py-3">Profiles</a>
+        <a href="create-profile.html" class="bg-gradient-to-r from-primary to-primary-dark text-white px-6 py-3 rounded-lg font-semibold text-lg">Join Community</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Form Container -->
+  <div class="flex-1 w-full lg:w-[90%] mx-auto px-2 sm:px-4 lg:px-6 py-6 sm:py-8">
+    <!-- Step 1: Profile Information -->
+    <div class="step active animate-fade-in" id="step1">
+      <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-primary to-primary-dark p-4 sm:p-6">
+          <!-- Progress Indicator -->
+          <div class="flex flex-row justify-center items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+            <div class="flex items-center">
+              <div id="step-indicator-1" class="w-6 sm:w-8 h-6 sm:h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold transition-all duration-300">1</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-white">Profile</span>
+            </div>
+            <div class="w-6 sm:w-6 h-0.5 bg-gray-300"></div>
+            <div class="flex items-center">
+              <div id="step-indicator-2" class="w-6 sm:w-8 h-6 sm:h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-semibold transition-all duration-300">2</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-gray-300">Products</span>
+            </div>
+            <div class="w-6 sm:w-6 h-0.5 bg-gray-300"></div>
+            <div class="flex items-center">
+              <div id="step-indicator-3" class="w-6 sm:w-8 h-6 sm:h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-semibold transition-all duration-300">3</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-gray-300">Download</span>
+            </div>
+          </div>
+          <h2 class="text-lg sm:text-2xl font-bold text-white">Your Profile Information</h2>
+        </div>
+        
+        <div class="p-4 sm:p-6">
+          <div class="flex justify-end mb-3 sm:mb-4">
+            <button type="button" onclick="loadExample()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg transition-colors font-medium text-sm sm:text-base">
+              Load Example Data
+            </button>
+          </div>
+          
+          <!-- Basic Info Row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+            <div>
+              <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Full Name *</label>
+              <input type="text" id="name" placeholder="Enter your full name" required aria-required="true"
+                     class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus-visible:outline-none transition-colors text-sm sm:text-base">
+            </div>
+            <div>
+              <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Profile Photo</label>
+              <input type="file" id="avatar" accept="image/*" 
+                     class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus-visible:outline-none transition-colors text-sm sm:text-base">
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+            <div>
+              <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+              <input type="email" id="email" placeholder="your.email@example.com" 
+                     class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus-visible:outline-none transition-colors text-sm sm:text-base">
+            </div>
+            <div>
+              <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+1 (555) 123-4567" 
+                     class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus-visible:outline-none transition-colors text-sm sm:text-base">
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+            <div>
+              <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">LinkedIn Profile</label>
+              <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile" 
+                     class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus-visible:outline-none transition-colors text-sm sm:text-base">
+            </div>
+            <div>
+              <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Twitter/X Profile</label>
+              <input type="url" id="twitter" placeholder="https://twitter.com/yourhandle" 
+                     class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus-visible:outline-none transition-colors text-sm sm:text-base">
+            </div>
+          </div>
+
+          <!-- Website -->
+          <div class="mb-3 sm:mb-4">
+            <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Personal Website</label>
+            <input type="url" id="website" placeholder="https://yourwebsite.com" 
+                   class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary focus-visible:outline-none transition-colors text-sm sm:text-base">
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center p-4 sm:p-6 bg-gray-50 border-t">
+          <div></div>
+          <button type="button" onclick="nextStep(1)" 
+                  class="bg-gradient-to-r from-primary to-primary-dark text-white px-4 sm:px-8 py-1.5 sm:py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base">
+            Next: Add Products
+            <svg class="w-4 sm:w-5 h-4 sm:h-5 ml-1 sm:ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Next">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Products/Services -->
+    <div class="step hidden step-transition" id="step2">
+      <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-accent to-blue-600 p-4 sm:p-6">
+          <!-- Progress Indicator -->
+          <div class="flex flex-row justify-center items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+            <div class="flex items-center">
+              <div id="step-indicator-1" class="w-6 sm:w-8 h-6 sm:h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold transition-all duration-300">1</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-white">Profile</span>
+            </div>
+            <div class="w-6 sm:w-6 h-0.5 bg-gray-300"></div>
+            <div class="flex items-center">
+              <div id="step-indicator-2" class="w-6 sm:w-8 h-6 sm:h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold transition-all duration-300">2</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-white">Products</span>
+            </div>
+            <div class="w-6 sm:w-6 h-0.5 bg-gray-300"></div>
+            <div class="flex items-center">
+              <div id="step-indicator-3" class="w-6 sm:w-8 h-6 sm:h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center font-semibold transition-all duration-300">3</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-gray-300">Download</span>
+            </div>
+          </div>
+          <h2 class="text-lg sm:text-2xl font-bold text-white">Your Products & Services</h2>
+        </div>
+        
+        <div class="p-4 sm:p-6">
+          <!-- Product Form -->
+          <div class="bg-gray-50 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Add a Product or Service</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+              <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Product/Service Name *</label>
+                <input type="text" id="product-name" placeholder="Enter product or service name" required aria-required="true"
+                       class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent focus-visible:outline-none transition-colors text-sm sm:text-base">
+              </div>
+              <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Industry Category *</label>
+                <select id="product-industry" required aria-required="true"
+                        class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent focus-visible:outline-none transition-colors text-sm sm:text-base">
+                  <option value="">Select Industry</option>
+                  <option value="Climate">Climate & Environment</option>
+                  <option value="Agriculture">Agriculture & Food</option>
+                  <option value="Energy">Energy & Utilities</option>
+                  <option value="Healthcare">Healthcare & Wellness</option>
+                  <option value="Education">Education & Training</option>
+                  <option value="Technology">Technology & Software</option>
+                  <option value="Manufacturing">Manufacturing & Industry</option>
+                  <option value="Finance">Finance & FinTech</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+              <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Price Range</label>
+                <input type="text" id="product-price" placeholder="e.g., $99, Free, Contact for pricing" 
+                       class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent focus-visible:outline-none transition-colors text-sm sm:text-base">
+              </div>
+              <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Demo Video URL</label>
+                <input type="text" id="product-video" placeholder="YouTube, Vimeo, or other video link" 
+                       class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent focus-visible:outline-none transition-colors text-sm sm:text-base">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
+              <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Tags</label>
+                <input type="text" id="product-tags" placeholder="solar, renewable, sustainable, IoT (comma-separated)" 
+                       class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent focus-visible:outline-none transition-colors text-sm sm:text-base">
+                <p class="text-xs text-gray-500 mt-1">Add relevant keywords to help people find your product</p>
+              </div>
+              <div>
+                <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">Product Image</label>
+                <input type="file" id="product-image" accept="image/*" 
+                       class="w-full px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent focus-visible:outline-none transition-colors text-sm sm:text-base">
+              </div>
+            </div>
+
+            <button type="button" onclick="addProduct()" 
+                    class="bg-gradient-to-r from-accent to-blue-600 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base">
+              <svg class="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Add Product">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              Add Product/Service
+            </button>
+          </div>
+
+          <!-- Products List -->
+          <div id="product-list" class="mb-4 sm:mb-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 flex items-center">
+              <svg class="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Products List">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+              Your Products & Services
+            </h3>
+            <div class="text-gray-500 text-center py-6 sm:py-8 border-2 border-dashed border-gray-300 rounded-lg text-sm sm:text-base">
+              No products added yet. Add your first product above to get started!
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center p-4 sm:p-6 bg-gray-50 border-t">
+          <button type="button" onclick="prevStep(2)" 
+                  class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg font-semibold transition-colors text-sm sm:text-base">
+            <svg class="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Previous">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Previous
+          </button>
+          <button type="button" onclick="nextStep(2)" 
+                  class="bg-gradient-to-r from-primary to-primary-dark text-white px-4 sm:px-8 py-1.5 sm:py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 text-sm sm:text-base">
+            Finish & Download
+            <svg class="w-4 sm:w-5 h-4 sm:h-5 ml-1 sm:ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Next">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Download -->
+    <div class="step hidden step-transition" id="step3">
+      <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-purple-600 to-purple-700 p-4 sm:p-6">
+          <!-- Progress Indicator -->
+          <div class="flex flex-row justify-center items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
+            <div class="flex items-center">
+              <div id="step-indicator-1" class="w-6 sm:w-8 h-6 sm:h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold transition-all duration-300">1</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-white">Profile</span>
+            </div>
+            <div class="w-6 sm:w-6 h-0.5 bg-gray-300"></div>
+            <div class="flex items-center">
+              <div id="step-indicator-2" class="w-6 sm:w-8 h-6 sm:h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold transition-all duration-300">2</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-white">Products</span>
+            </div>
+            <div class="w-6 sm:w-6 h-0.5 bg-gray-300"></div>
+            <div class="flex items-center">
+              <div id="step-indicator-3" class="w-6 sm:w-8 h-6 sm:h-8 bg-primary text-white rounded-full flex items-center justify-center font-semibold transition-all duration-300">3</div>
+              <span class="ml-2 text-xs sm:text-sm font-medium text-white">Download</span>
+            </div>
+          </div>
+          <h2 class="text-lg sm:text-2xl font-bold text-white">Download Your Profile</h2>
+        </div>
+        
+        <div class="p-4 sm:p-6 text-center">
+          <div class="w-20 sm:w-24 h-20 sm:h-24 bg-gradient-to-r from-primary to-primary-dark rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+            <svg class="w-10 sm:w-12 h-10 sm:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Success">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          
+          <h3 class="text-lg sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Congratulations!</h3>
+          <p class="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 max-w-md sm:max-w-2xl mx-auto">
+            Your innovator profile is complete and ready to be shared with the community. 
+            Download your profile files and start connecting with other innovators!
+          </p>
+          
+          <div class="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 rounded-xl border border-gray-200 mb-4 sm:mb-6">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">What you'll get:</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-left">
+              <div class="flex items-start space-x-2 sm:space-x-3">
+                <div class="w-6 sm:w-8 h-6 sm:h-8 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-3 sm:w-4 h-3 sm:h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="HTML File">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h5 class="font-semibold text-gray-900 text-sm sm:text-base">HTML Profile</h5>
+                  <p class="text-xs sm:text-sm text-gray-600">Beautiful, responsive profile page</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-2 sm:space-x-3">
+                <div class="w-6 sm:w-8 h-6 sm:h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-3 sm:w-4 h-3 sm:h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Assets">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h5 class="font-semibold text-gray-900 text-sm sm:text-base">Assets</h5>
+                  <p class="text-xs sm:text-sm text-gray-600">All images and media files</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-2 sm:space-x-3">
+                <div class="w-6 sm:w-8 h-6 sm:h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-3 sm:w-4 h-3 sm:h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Instructions">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h5 class="font-semibold text-gray-900 text-sm sm:text-base">Instructions</h5>
+                  <p class="text-xs sm:text-sm text-gray-600">Setup and sharing guide</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" onclick="generateFiles()" 
+                  class="bg-gradient-to-r from-primary to-primary-dark text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold text-base sm:text-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 mb-3 sm:mb-4">
+            <svg class="w-5 sm:w-6 h-5 sm:h-6 mr-2 sm:mr-3 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Download">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            Download Profile Package (ZIP)
+          </button>
+          
+          <p class="text-xs sm:text-sm text-gray-500">
+            The downloaded package will contain everything you need to share your profile online
+          </p>
+        </div>
+        
+        <div class="flex justify-between items-center p-4 sm:p-6 bg-gray-50 border-t">
+          <button type="button" onclick="prevStep(3)" 
+                  class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg font-semibold transition-colors text-sm sm:text-base">
+            <svg class="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Previous">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Previous
+          </button>
+          <a href="listings.html" 
+             class="bg-accent hover:bg-blue-600 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg font-semibold transition-colors text-sm sm:text-base">
+            Browse Community
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slim Footer -->
+  <footer class="bg-gray-900 text-white py-4 sm:py-6" role="contentinfo">
+    <div class="w-full lg:w-[90%] mx-auto px-2 sm:px-4 lg:px-6 text-center">
+      <div class="flex items-center justify-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+        <div class="w-6 sm:w-8 h-6 sm:h-8 bg-gradient-to-r from-primary to-primary-dark rounded-lg flex items-center justify-center">
+          <svg class="w-4 sm:w-5 h-4 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Innovators Hub Logo">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-base sm:text-lg font-bold">Innovators Hub</h3>
+          <p class="text-gray-400 text-xs sm:block hidden">Building Tomorrow Together</p>
+        </div>
+      </div>
+      <p class="text-gray-400 text-xs sm:text-sm">&copy; 2025 Innovators Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JS Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+  <script>
+    // Global variable to store products
+    let products = [];
+
+    // Step navigation functions
+    function nextStep(current) {
+      // Hide current step
+      document.getElementById(`step${current}`).classList.add('hidden');
+      document.getElementById(`step${current}`).classList.remove('active');
+      
+      // Show next step with animation
+      const nextStepElement = document.getElementById(`step${current+1}`);
+      nextStepElement.classList.remove('hidden');
+      setTimeout(() => {
+        nextStepElement.classList.add('active');
+        nextStepElement.classList.add('animate-fade-in');
+      }, 50);
+      
+      // Update progress indicators
+      updateStepIndicators(current + 1);
+    }
+
+    function prevStep(current) {
+      // Hide current step
+      document.getElementById(`step${current}`).classList.add('hidden');
+      document.getElementById(`step${current}`).classList.remove('active');
+      
+      // Show previous step with animation
+      const prevStepElement = document.getElementById(`step${current-1}`);
+      prevStepElement.classList.remove('hidden');
+      setTimeout(() => {
+        prevStepElement.classList.add('active');
+        prevStepElement.classList.add('animate-fade-in');
+      }, 50);
+      
+      // Update progress indicators
+      updateStepIndicators(current - 1);
+    }
+
+    function updateStepIndicators(activeStep) {
+      for (let i = 1; i <= 3; i++) {
+        const indicator = document.getElementById(`step-indicator-${i}`);
+        const stepText = indicator.nextElementSibling;
+        
+        if (i <= activeStep) {
+          indicator.classList.remove('bg-gray-300', 'text-gray-600');
+          indicator.classList.add('bg-primary', 'text-white');
+          stepText.classList.remove('text-gray-300', 'text-gray-600');
+          stepText.classList.add('text-white');
+        } else {
+          indicator.classList.remove('bg-primary', 'text-white');
+          indicator.classList.add('bg-gray-300', 'text-gray-600');
+          stepText.classList.remove('text-white');
+          stepText.classList.add('text-gray-300');
+        }
+      }
+    }
+
+    // Load example data
+    function loadExample() {
+      document.getElementById('name').value = "John Doe";
+      document.getElementById('email').value = "john.doe@example.com";
+      document.getElementById('phone').value = "+1 (555) 123-4567";
+      document.getElementById('linkedin').value = "https://linkedin.com/in/johndoe";
+      document.getElementById('twitter').value = "https://twitter.com/johndoe";
+      document.getElementById('website').value = "https://johndoe.com";
+    }
+
+    // Add product function
+    function addProduct() {
+      const name = document.getElementById('product-name').value;
+      const industry = document.getElementById('product-industry').value;
+      const price = document.getElementById('product-price').value;
+      const video = document.getElementById('product-video').value;
+      const tags = document.getElementById('product-tags').value;
+      const imageFile = document.getElementById('product-image').files[0];
+
+      if (!name || !industry) {
+        alert('Please fill in all required fields for the product.');
+        return;
+      }
+
+      const product = {
+        id: Date.now(),
+        name,
+        industry,
+        price,
+        video,
+        tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+        image: imageFile ? imageFile.name : null
+      };
+
+      products.push(product);
+      renderProducts();
+      clearProductForm();
+    }
+
+    // Render products list
+    function renderProducts() {
+      const container = document.getElementById('product-list');
+      const listContainer = container.querySelector('.text-gray-500') || container;
+      
+      if (products.length === 0) {
+        listContainer.innerHTML = `
+          <div class="text-gray-500 text-center py-6 sm:py-8 border-2 border-dashed border-gray-300 rounded-lg text-sm sm:text-base">
+            No products added yet. Add your first product above to get started!
+          </div>
+        `;
+        return;
+      }
+
+      listContainer.innerHTML = products.map(product => `
+        <div class="bg-white rounded-xl border border-gray-200 p-4 sm:p-6 mb-3 sm:mb-4 shadow-sm">
+          <div class="flex flex-col sm:flex-row justify-between items-start mb-3 sm:mb-4">
+            <div>
+              <h4 class="text-base sm:text-lg font-bold text-gray-900">${product.name}</h4>
+              <span class="inline-block px-2 sm:px-3 py-0.5 sm:py-1 bg-${getIndustryColor(product.industry)}-100 text-${getIndustryColor(product.industry)}-700 rounded-full text-xs sm:text-sm font-medium mt-1 sm:mt-2">
+                ${product.industry}
+              </span>
+            </div>
+            <button onclick="removeProduct(${product.id})" class="text-red-500 hover:text-red-700 transition-colors mt-2 sm:mt-0">
+              <svg class="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Remove Product">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+          ${product.price ? `<p class="text-xs sm:text-sm text-gray-500 mb-2"><strong>Price:</strong> ${product.price}</p>` : ''}
+          ${product.tags.length > 0 ? `
+            <div class="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
+              ${product.tags.map(tag => `<span class="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-gray-100 text-gray-600 text-xs rounded">${tag}</span>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    // Remove product
+    function removeProduct(productId) {
+      products = products.filter(p => p.id !== productId);
+      renderProducts();
+    }
+
+    // Clear product form
+    function clearProductForm() {
+      document.getElementById('product-name').value = '';
+      document.getElementById('product-industry').value = '';
+      document.getElementById('product-price').value = '';
+      document.getElementById('product-video').value = '';
+      document.getElementById('product-tags').value = '';
+      document.getElementById('product-image').value = '';
+    }
+
+    // Get industry color for styling
+    function getIndustryColor(industry) {
+      const colors = {
+        'Climate': 'green',
+        'Agriculture': 'emerald',
+        'Energy': 'yellow',
+        'Healthcare': 'pink',
+        'Education': 'blue',
+        'Technology': 'purple',
+        'Manufacturing': 'gray',
+        'Finance': 'indigo',
+        'Other': 'slate'
+      };
+      return colors[industry] || 'gray';
+    }
+
+    // Generate and download files
+    function generateFiles() {
+      alert('Profile package generated successfully! Download will begin shortly.');
+    }
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.querySelector('#mobile-menu-btn');
+    const mobileMenu = document.querySelector('#mobile-menu');
+    const closeMenuButton = document.querySelector('#close-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      updateStepIndicators(1);
+    });
+  </script>
+</body>
+</html>
