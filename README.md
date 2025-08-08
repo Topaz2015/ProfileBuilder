@@ -1,7 +1,11 @@
-Simple profile building assist for innovators group. 
 
-Just fill in your personal details, add your profile photo or logo, add your socialmedia lnks (optional) and this small engine will bring it together for you. 
+How it works!!
 
-Easily add your products, add images, video links and external profile links. Download your webpages output as a zipfile. 
-
-No residue of your presense is left on the server.
+    Simple profile building assist for innovators. its simple to use.
+    1. First fill in your personal profile details and upload your avatar (can be individual or organisation details).
+    2. Enter product details and upload an image or brand logo. If you have a video link just paste it.
+    3. Add tags for each product. This will enable sorting by tags later in the database.
+    4. Click to Add product. This activates the creation of that product's page. An innovator can have multiple products. 
+    5. Lastly hit the Download Profile button. Everything is now bundled up to a small website with "your_name.html" as the root.
+    NB: The resulting profile is not archived.
+    Preview page is found at https://topaz2015.github.io/ProfileBuilder
